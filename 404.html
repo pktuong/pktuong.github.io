@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Đang chuyển hướng...</title>
+</head>
+<body>
+<p>Đang chuyển hướng...</p>
+<script>
+  // Đổi giá trị này thành domain worker của bạn
+  var WORKER_ORIGIN = "https://dev.tuongdang381.workers.dev";
+
+  // /rutgonlink/1111 -> bỏ "rutgonlink" (tên repo), giữ lại "1111"
+  var parts = window.location.pathname.split("/").filter(Boolean);
+  parts.shift(); // bỏ segment đầu tiên (tên repo)
+  var codePath = "/" + parts.join("/");
+
+  var target = WORKER_ORIGIN + codePath + window.location.search;
+  location.replace(target);
+</script>
+</body>
+</html>
